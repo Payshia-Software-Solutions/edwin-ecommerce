@@ -1,19 +1,23 @@
 export type Product = {
-  id: number;
+  id: string;
   name: string;
+  category: string;
+  price: number;
   description: string;
+  images: string[];
+  sizes: string[];
+  featured?: boolean;
+  tags?: string[];
+  data_ai_hint?: string;
+  colors?: number;
+  fit?: string;
+};
+
+export type CartItem = {
+  id: string;
+  name: string;
   price: number;
   image: string;
-  category: Category;
-  sizes: string[];
-  colors: string[];
-  keywords: string;
-};
-
-export type CartItem = Product & {
   quantity: number;
   selectedSize: string;
-  selectedColor: string;
 };
-
-export type Category = 'Tops' | 'Bottoms' | 'Dresses' | 'Outerwear' | 'Accessories';
