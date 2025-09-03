@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -46,11 +47,6 @@ const navItems = [
     {
       label: 'ACCESSORIES',
       href: '/shop/accessories',
-      subItems: [
-          { label: 'Bags', href: '/shop/accessories/bags' },
-          { label: 'Belts', href: '/shop/accessories/belts' },
-          { label: 'Hats', href: '/shop/accessories/hats' },
-      ],
     },
     {
       label: 'GIFTS',
