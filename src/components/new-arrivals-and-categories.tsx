@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
@@ -10,12 +12,24 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel"
+import { motion } from 'framer-motion';
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
 
 export function NewArrivalsAndCategories() {
   const newProducts = getFeaturedProducts();
 
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <motion.section 
+      className="py-16 md:py-24 bg-background"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={sectionVariants}
+    >
       <div className="container mx-auto px-4 space-y-20">
         <div>
           <div className="flex justify-between items-center mb-8">
@@ -99,6 +113,6 @@ export function NewArrivalsAndCategories() {
           </Link>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

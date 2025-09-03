@@ -1,10 +1,24 @@
+"use client";
+
 import Image from 'next/image';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
+import { motion } from 'framer-motion';
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
 
 export function NewsletterSignup() {
   return (
-    <section className="relative bg-background py-20 md:py-24 overflow-hidden">
+    <motion.section 
+      className="relative bg-background py-20 md:py-24 overflow-hidden"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={sectionVariants}
+    >
       <div className="absolute inset-0 z-0 opacity-20 dark:opacity-40">
         <Image
           src="https://placehold.co/1920x400.png"
@@ -35,6 +49,6 @@ export function NewsletterSignup() {
           </Button>
         </form>
       </div>
-    </section>
+    </motion.section>
   );
 }

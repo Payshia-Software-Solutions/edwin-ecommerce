@@ -1,3 +1,5 @@
+"use client";
+
 import Image from 'next/image';
 import { Button } from './ui/button';
 import Link from 'next/link';
@@ -8,12 +10,24 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+};
 
 export function FeaturedCollection() {
   const bestSellers = getFeaturedProducts();
 
   return (
-    <section className="bg-background text-foreground">
+    <motion.section 
+      className="bg-background text-foreground"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={sectionVariants}
+    >
       {/* Hero-like section */}
       <div className="relative h-[60vh] md:h-[70vh] w-full flex items-center justify-center text-white">
         <Image
@@ -138,6 +152,6 @@ export function FeaturedCollection() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
