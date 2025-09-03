@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
+import Link from 'next/link';
 
 function OrderSummaryItem({ item }: { item: any }) {
     return (
@@ -70,8 +71,8 @@ export function OrderSummary() {
             <Button variant="outline" className="bg-background">Apply</Button>
         </div>
         
-        <Button className="w-full bg-black text-white hover:bg-black/90 rounded-full h-12 font-bold text-base">
-            Place Order
+        <Button asChild className="w-full bg-black text-white hover:bg-black/90 rounded-full h-12 font-bold text-base">
+            <Link href="/checkout/confirmation">Continue to Confirmation</Link>
         </Button>
         <p className="text-xs text-muted-foreground mt-4 text-center">
             By placing this order, you agree to our terms and policies.
