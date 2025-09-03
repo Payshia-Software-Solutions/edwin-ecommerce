@@ -1,3 +1,4 @@
+
 import type { Product } from './types';
 
 const products: Product[] = [
@@ -45,8 +46,9 @@ const products: Product[] = [
     name: 'Minimalist Leather Sneakers',
     category: 'Shoes',
     price: 149.99,
+    salePrice: 119.99,
     description: 'Handcrafted from full-grain Italian leather for a clean, minimalist look.',
-    images: ['https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080', 'https://placehold.co/600x800.png'],
+    images: ['https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080', 'https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080'],
     sizes: ['8', '9', '10', '11', '12'],
     featured: true,
     data_ai_hint: 'white sneakers',
@@ -58,6 +60,7 @@ const products: Product[] = [
     name: 'Flowy Summer Dress',
     category: 'Dresses',
     price: 99.99,
+    salePrice: 79.99,
     description: 'Light and airy, this dress is perfect for warm summer days.',
     images: ['https://placehold.co/600x800.png'],
     sizes: ['XS', 'S', 'M', 'L'],
@@ -90,6 +93,7 @@ const products: Product[] = [
     name: 'Silk Blend Blouse',
     category: 'Tops',
     price: 79.99,
+    salePrice: 59.99,
     description: 'An elegant blouse that transitions perfectly from desk to dinner.',
     images: ['https://placehold.co/600x800.png'],
     sizes: ['XS', 'S', 'M', 'L'],
@@ -121,6 +125,7 @@ const products: Product[] = [
     name: 'Classic Leather Belt',
     category: 'Accessories',
     price: 45.00,
+    salePrice: 35.00,
     description: 'A timeless leather belt that completes any outfit.',
     images: ['https://images.unsplash.com/photo-1684510334550-0c4fa8aaffd1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZWF0aGVyJTIwYmVsdHxlbnwwfHx8fDE3NTE3MzUxODl8MA&ixlib=rb-4.1.0&q=80&w=1080'],
     sizes: ['S', 'M', 'L'],

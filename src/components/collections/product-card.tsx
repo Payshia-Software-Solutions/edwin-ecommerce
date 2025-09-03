@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -10,6 +11,8 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
+  const hasSale = product.salePrice && product.salePrice < product.price;
+
   return (
     <Link href={`/product/${product.id}`} className="block group">
       <div className="relative aspect-[3/4] w-full overflow-hidden rounded-md bg-gray-100 dark:bg-zinc-800">
@@ -20,13 +23,29 @@ export function ProductCard({ product }: ProductCardProps) {
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-105"
         />
-        {product.featured && (
+        {hasSale && (
+          <Badge className="absolute top-2 left-2 bg-primary text-white rounded-sm">SALE</Badge>
+        )}
+        {product.featured && !hasSale && (
           <Badge className="absolute top-2 left-2 bg-black text-white rounded-sm">NEW</Badge>
         )}
       </div>
       <div className="pt-4 text-center">
         <h3 className="font-medium truncate">{product.name}</h3>
-        <p className="font-semibold mt-1">LKR {product.price.toFixed(2)}</p>
+        <div className="font-semibold mt-1 flex justify-center items-baseline gap-2">
+          {hasSale ? (
+            <>
+              <span className="text-muted-foreground line-through">
+                LKR {product.price.toFixed(2)}
+              </span>
+              <span className="text-primary">
+                LKR {product.salePrice?.toFixed(2)}
+              </span>
+            </>
+          ) : (
+            <span>LKR {product.price.toFixed(2)}</span>
+          )}
+        </div>
       </div>
     </Link>
   );
