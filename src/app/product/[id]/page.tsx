@@ -19,7 +19,7 @@ export default function ProductPage({ params }: ProductPageProps) {
   }
 
   // Exclude the current product from the related products list
-  const relatedProducts = allProducts.filter(p => p.id !== product.id).slice(0, 4);
+  const relatedProducts = allProducts.filter(p => p.id !== product.id).slice(0, 5);
 
   return (
     <div className="container mx-auto px-4 py-8">
