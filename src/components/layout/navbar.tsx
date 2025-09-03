@@ -22,6 +22,10 @@ import { ThemeToggle } from '../theme-toggle';
 
 const navItems = [
     {
+      label: 'SHOP',
+      href: '/collections',
+    },
+    {
       label: 'MEN',
       href: '/shop/men',
       subItems: [
@@ -81,19 +85,25 @@ export function Navbar() {
         {/* Center Section: Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           {navItems.map((item) => (
-            <DropdownMenu key={item.label}>
-              <DropdownMenuTrigger className="flex items-center text-sm font-medium uppercase text-muted-foreground transition-colors hover:text-foreground focus:outline-none">
+            item.subItems ? (
+              <DropdownMenu key={item.label}>
+                <DropdownMenuTrigger className="flex items-center text-sm font-medium uppercase text-muted-foreground transition-colors hover:text-foreground focus:outline-none">
+                  {item.label}
+                  <ChevronDown className="h-4 w-4 ml-1" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  {item.subItems.map((subItem) => (
+                    <DropdownMenuItem key={subItem.label} asChild>
+                      <Link href={subItem.href}>{subItem.label}</Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link key={item.label} href={item.href} className="text-sm font-medium uppercase text-muted-foreground transition-colors hover:text-foreground">
                 {item.label}
-                <ChevronDown className="h-4 w-4 ml-1" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                {item.subItems.map((subItem) => (
-                  <DropdownMenuItem key={subItem.label} asChild>
-                    <Link href={subItem.href}>{subItem.label}</Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+              </Link>
+            )
           ))}
           <Link href={lastChanceLink.href} className="text-sm font-medium uppercase text-muted-foreground transition-colors hover:text-foreground">
             {lastChanceLink.label}
@@ -129,6 +139,7 @@ export function Navbar() {
               <nav className="grid gap-4 p-4 text-lg font-medium mt-8">
                 <Accordion type="single" collapsible className="w-full">
                   {navItems.map((item) => (
+                    item.subItems ? (
                     <AccordionItem value={item.label} key={item.label}>
                       <AccordionTrigger className="py-3 text-base font-semibold uppercase hover:no-underline">
                         {item.label}
@@ -143,6 +154,11 @@ export function Navbar() {
                         </div>
                       </AccordionContent>
                     </AccordionItem>
+                    ) : (
+                      <Link key={item.label} href={item.href} className="font-semibold uppercase py-3 border-b flex items-center justify-between hover:no-underline">
+                        {item.label}
+                      </Link>
+                    )
                   ))}
                 </Accordion>
                 <Link href={lastChanceLink.href} className="font-semibold uppercase py-2 border-t mt-2">
