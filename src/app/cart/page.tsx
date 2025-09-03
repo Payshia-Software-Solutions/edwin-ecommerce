@@ -19,8 +19,8 @@ export default function CartPage() {
   const progressPercentage = Math.min((totalPrice / FREE_SHIPPING_THRESHOLD) * 100, 100);
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">My Cart</h1>
+    <div className="container mx-auto px-4 py-8 md:py-12">
+      <h1 className="text-3xl font-bold mb-8 text-center md:text-left">My Cart</h1>
 
       {cartItems.length === 0 ? (
         <div className="text-center py-20">
@@ -30,7 +30,7 @@ export default function CartPage() {
           </Button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-muted/30 p-4 rounded-lg">
               {amountLeftForFreeShipping > 0 ? (
@@ -85,8 +85,8 @@ export default function CartPage() {
                 <span>LKR {totalPrice.toFixed(2)}</span>
               </div>
               <div className="mt-6 space-y-3">
-                <Button className="w-full bg-black text-white hover:bg-black/90 rounded-full h-12 font-bold">
-                  CHECK OUT
+                <Button className="w-full bg-black text-white hover:bg-black/90 rounded-full h-12 font-bold" asChild>
+                  <Link href="/checkout">CHECK OUT</Link>
                 </Button>
                 <Button variant="outline" className="w-full bg-white rounded-full h-12" asChild>
                     <Link href="/collections">
