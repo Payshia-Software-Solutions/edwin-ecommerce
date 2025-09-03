@@ -20,11 +20,11 @@ import { Slider } from "@/components/ui/slider";
 
 export function FilterSidebar() {
   return (
-    <aside className="w-full md:w-72 lg:w-80">
+    <aside className="w-full md:w-64">
       <div className="space-y-6">
         <Accordion type="multiple" defaultValue={['availability', 'price', 'style', 'size', 'color']} className="w-full">
           <AccordionItem value="availability">
-            <AccordionTrigger className="text-sm font-semibold uppercase tracking-wider">Availability</AccordionTrigger>
+            <AccordionTrigger className="text-sm font-semibold uppercase tracking-wider py-3 hover:no-underline">Availability</AccordionTrigger>
             <AccordionContent>
               <div className="space-y-3 pt-2">
                 <div className="flex items-center space-x-2">
@@ -39,15 +39,15 @@ export function FilterSidebar() {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="price">
-            <AccordionTrigger className="text-sm font-semibold uppercase tracking-wider">Price</AccordionTrigger>
+            <AccordionTrigger className="text-sm font-semibold uppercase tracking-wider py-3 hover:no-underline">Price</AccordionTrigger>
             <AccordionContent>
-                <div className="pt-4">
+                <div className="pt-4 px-1">
                     <Slider defaultValue={[50]} max={100} step={1} />
                 </div>
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="style">
-            <AccordionTrigger className="text-sm font-semibold uppercase tracking-wider">Style</AccordionTrigger>
+            <AccordionTrigger className="text-sm font-semibold uppercase tracking-wider py-3 hover:no-underline">Style</AccordionTrigger>
             <AccordionContent>
               <div className="space-y-3 pt-2">
                 <div className="flex items-center space-x-2">
@@ -62,7 +62,7 @@ export function FilterSidebar() {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="size">
-            <AccordionTrigger className="text-sm font-semibold uppercase tracking-wider">Size</AccordionTrigger>
+            <AccordionTrigger className="text-sm font-semibold uppercase tracking-wider py-3 hover:no-underline">Size</AccordionTrigger>
             <AccordionContent>
               <div className="space-y-3 pt-2">
                 <div className="flex items-center space-x-2">
@@ -80,8 +80,8 @@ export function FilterSidebar() {
               </div>
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="color">
-            <AccordionTrigger className="text-sm font-semibold uppercase tracking-wider">Color</AccordionTrigger>
+          <AccordionItem value="color" className="border-b-0">
+            <AccordionTrigger className="text-sm font-semibold uppercase tracking-wider py-3 hover:no-underline">Color</AccordionTrigger>
             <AccordionContent>
                <div className="flex flex-wrap gap-3 pt-2">
                   <button className="h-8 w-8 rounded-full bg-black border"></button>
@@ -93,10 +93,11 @@ export function FilterSidebar() {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
-        <div>
+        
+        <div className="border-t pt-6">
             <h3 className="text-sm font-semibold uppercase tracking-wider mb-3">Sort By</h3>
             <Select>
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full rounded-md">
                     <SelectValue placeholder="Manual" />
                 </SelectTrigger>
                 <SelectContent>
