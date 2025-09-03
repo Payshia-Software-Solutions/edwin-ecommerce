@@ -10,7 +10,7 @@ export function NewsletterSignup() {
           src="https://placehold.co/1920x400.png"
           alt="Abstract background with motion lines"
           data-ai-hint="abstract motion lines"
-          layout="fill"
+          fill
           objectFit="cover"
         />
       </div>
