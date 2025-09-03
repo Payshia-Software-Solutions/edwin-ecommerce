@@ -38,11 +38,6 @@ const navItems = [
     {
       label: 'WOMEN',
       href: '/shop/women',
-      subItems: [
-          { label: 'Dresses', href: '/shop/women/dresses' },
-          { label: 'Tops', href: '/shop/women/tops' },
-          { label: 'Skirts', href: '/shop/women/skirts' },
-      ],
     },
     {
       label: 'ACCESSORIES',
@@ -168,3 +163,5 @@ export function Navbar() {
     </header>
   );
 }
+
+    

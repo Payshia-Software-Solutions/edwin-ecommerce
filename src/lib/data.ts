@@ -51,7 +51,7 @@ const products: Product[] = [
     price: 149.99,
     salePrice: 119.99,
     description: 'Handcrafted from full-grain Italian leather for a clean, minimalist look.',
-    images: ['https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080', 'https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080'],
+    images: ['https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080', 'https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080'],
     sizes: ['8', '9', '10', '11', '12'],
     featured: true,
     data_ai_hint: 'white sneakers',
@@ -108,6 +108,7 @@ const products: Product[] = [
     name: 'Everyday Duffel Bag',
     category: 'Accessories',
     price: 75.00,
+    salePrice: 60.00,
     description: 'The perfect companion for the gym or a weekend getaway. Durable and spacious.',
     images: ['https://images.unsplash.com/photo-1673505705687-dffbfd02b613?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkdWZmZWwlMjBiYWclMjBibGFja3xlbnwwfHx8fDE3NTE3MzUxODl8MA&ixlib=rb-4.1.0&q=80&w=1080'],
     sizes: ['One Size'],
@@ -172,3 +173,10 @@ export function getFeaturedProducts(): Product[] {
 export function getAccessoryProducts(): Product[] {
   return products.filter(p => p.category === 'Accessories');
 }
+
+export function getWomenProducts(): Product[] {
+  const womenCategories = ['Dresses', 'Tops', 'Skirts'];
+  return products.filter(p => womenCategories.includes(p.category));
+}
+
+    
