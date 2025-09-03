@@ -26,7 +26,7 @@ export function CartSidebar() {
       <SheetTrigger asChild>
         <CartIcon />
       </SheetTrigger>
-      <SheetContent className="flex w-full flex-col pr-0 sm:max-w-md">
+      <SheetContent className="flex w-full flex-col pr-0 sm:max-w-sm">
         <SheetHeader className="px-6">
           <SheetTitle>Cart ({cartCount})</SheetTitle>
         </SheetHeader>
@@ -41,13 +41,13 @@ export function CartSidebar() {
               </div>
             </ScrollArea>
             <Separator />
-            <SheetFooter className="p-6 sm:justify-between">
-                <div className="text-lg font-semibold">
+            <SheetFooter className="p-6 sm:flex-col sm:space-y-4">
+                <div className="flex justify-between text-lg font-semibold">
                     <span>Subtotal:</span>
                     <span> LKR {totalPrice.toFixed(2)}</span>
                 </div>
-                <Button asChild className="w-full sm:w-auto">
-                    <Link href="/checkout">Continue to Checkout</Link>
+                <Button asChild className="w-full">
+                    <Link href="/cart">Go to cart page</Link>
                 </Button>
             </SheetFooter>
           </>
