@@ -29,11 +29,6 @@ const navItems = [
     {
       label: 'MEN',
       href: '/shop/men',
-      subItems: [
-        { label: 'T-Shirts', href: '/shop/men/t-shirts' },
-        { label: 'Jackets', href: '/shop/men/jackets' },
-        { label: 'Pants', href: '/shop/men/pants' },
-      ],
     },
     {
       label: 'WOMEN',

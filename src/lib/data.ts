@@ -51,7 +51,7 @@ const products: Product[] = [
     price: 149.99,
     salePrice: 119.99,
     description: 'Handcrafted from full-grain Italian leather for a clean, minimalist look.',
-    images: ['https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080', 'https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080'],
+    images: ['https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080', 'https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib-rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib-rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib-rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib-rb-4.1.0&q=80&w=1080','https://images.unsplash.com/photo-1597350584914-55bb62285896?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHNuZWFrZXJzfGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib-rb-4.1.0&q=80&w=1080'],
     sizes: ['8', '9', '10', '11', '12'],
     featured: true,
     data_ai_hint: 'white sneakers',
@@ -121,7 +121,7 @@ const products: Product[] = [
     category: 'Accessories',
     price: 95.00,
     description: 'A stylish and functional backpack for all your daily needs.',
-    images: ['https://images.unsplash.com/photo-1540394285875-f7b4538c4874?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjYW52YXMlMjBiYWNrcGFja3xlbnwwfHx8fDE3NTE3MzUxODl8MA&ixlib=rb-4.1.0&q=80&w=1080'],
+    images: ['https://images.unsplash.com/photo-1540394285875-f7b4538c4874?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjYW52YXMlMjBiYWNrcGFja3xlbnwwfHx8fDE3NTE3MzUxODl8MA&ixlib-rb-4.1.0&q=80&w=1080'],
     sizes: ['One Size'],
     data_ai_hint: 'canvas backpack',
   },
@@ -132,7 +132,7 @@ const products: Product[] = [
     price: 45.00,
     salePrice: 35.00,
     description: 'A timeless leather belt that completes any outfit.',
-    images: ['https://images.unsplash.com/photo-1684510334550-0c4fa8aaffd1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZWF0aGVyJTIwYmVsdHxlbnwwfHx8fDE3NTE3MzUxODl8MA&ixlib=rb-4.1.0&q=80&w=1080'],
+    images: ['https://images.unsplash.com/photo-1684510334550-0c4fa8aaffd1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsZWF0aGVyJTIwYmVsdHxlbnwwfHx8fDE3NTE3MzUxODl8MA&ixlib-rb-4.1.0&q=80&w=1080'],
     sizes: ['S', 'M', 'L'],
     data_ai_hint: 'leather belt',
   },
@@ -142,7 +142,7 @@ const products: Product[] = [
     category: 'Accessories',
     price: 25.00,
     description: 'Stay warm with this soft and comfortable knit beanie.',
-    images: ['https://images.unsplash.com/photo-1521160222242-ea015a06eba7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxrbml0JTIwYmVhbmllfGVufDB8fHx8MTc1MTczNTE4OXww&ixlib=rb-4.1.0&q=80&w=1080'],
+    images: ['https://images.unsplash.com/photo-1521160222242-ea015a06eba7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxrbml0JTIwYmVhbmllfGVufDB8fHx8MTc1MTczNTE4OXww&ixlib-rb-4.1.0&q=80&w=1080'],
     sizes: ['One Size'],
     data_ai_hint: 'knit beanie',
   },
@@ -152,7 +152,7 @@ const products: Product[] = [
     category: 'Accessories',
     price: 30.00,
     description: 'A sleek and modern cap for a sporty look.',
-    images: ['https://images.unsplash.com/photo-1592367630397-65872fe016e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxiYXNlYmFsbCUyMGNhcHxlbnwwfHx8fDE3NTE3MzUxODl8MA&ixlib=rb-4.1.0&q=80&w=1080'],
+    images: ['https://images.unsplash.com/photo-1592367630397-65872fe016e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxiYXNlYmFsbCUyMGNhcHxlbnwwfHx8fDE3NTE3MzUxODl8MA&ixlib-rb-4.1.0&q=80&w=1080'],
     sizes: ['One Size'],
     data_ai_hint: 'baseball cap',
   },
@@ -179,4 +179,7 @@ export function getWomenProducts(): Product[] {
   return products.filter(p => womenCategories.includes(p.category));
 }
 
-    
+export function getMenProducts(): Product[] {
+  const menCategories = ['Jackets', 'Pants', 'T-Shirts', 'Shoes', 'Shorts'];
+  return products.filter(p => menCategories.includes(p.category));
+}
