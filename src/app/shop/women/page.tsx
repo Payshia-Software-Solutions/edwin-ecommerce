@@ -9,7 +9,7 @@ export default function WomenPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-10">
+      <div className="mb-10 text-center md:text-left">
         <h1 className="text-3xl font-bold uppercase tracking-wider">Women's Wear</h1>
         <p className="text-muted-foreground mt-1">Explore our curated seasonal essentials</p>
       </div>
