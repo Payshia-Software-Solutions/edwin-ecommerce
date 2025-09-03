@@ -7,7 +7,7 @@ const products: Product[] = [
     category: 'Jackets',
     price: 129.99,
     description: 'A versatile jacket for the modern explorer. Waterproof and breathable.',
-    images: ['https://images.unsplash.com/photo-1667104445036-a3bd1c8333f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtZW5zJTIwamFja2V0fGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080', 'https://placehold.co/600x800.png'],
+    images: ['https://images.unsplash.com/photo-1667104445036-a3bd1c8333f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxtZW5zJTIwamFja2V0fGVufDB8fHx8MTc1MTczNDk5M3ww&ixlib=rb-4.1.0&q=80&w=1080', 'https://placehold.co/600x800.png', 'https://placehold.co/600x800.png', 'https://placehold.co/600x800.png', 'https://placehold.co/600x800.png', 'https://placehold.co/600x800.png'],
     sizes: ['S', 'M', 'L', 'XL'],
     featured: true,
     data_ai_hint: 'mens jacket',
