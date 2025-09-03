@@ -8,6 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
   SheetFooter,
+  SheetClose,
 } from "@/components/ui/sheet";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
@@ -46,18 +47,20 @@ export function CartSidebar() {
                     <span>Subtotal:</span>
                     <span> LKR {totalPrice.toFixed(2)}</span>
                 </div>
-                <Button asChild className="w-full">
-                    <Link href="/cart">Go to cart page</Link>
-                </Button>
+                <SheetClose asChild>
+                    <Button asChild className="w-full">
+                        <Link href="/cart">Go to cart page</Link>
+                    </Button>
+                </SheetClose>
             </SheetFooter>
           </>
         ) : (
           <div className="flex h-full flex-col items-center justify-center gap-4">
             <ShoppingBag className="h-20 w-20 text-muted-foreground" />
             <p className="text-muted-foreground">Your cart is empty.</p>
-            <SheetTrigger asChild>
+            <SheetClose asChild>
                 <Button variant="link">Continue Shopping</Button>
-            </SheetTrigger>
+            </SheetClose>
           </div>
         )}
       </SheetContent>
