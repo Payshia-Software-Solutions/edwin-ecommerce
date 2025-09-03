@@ -11,7 +11,7 @@ export default function SalePage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-10 text-center">
+      <div className="mb-10">
         <h1 className="text-3xl font-bold uppercase tracking-wider">Last Chance</h1>
         <p className="text-muted-foreground mt-1">Explore our curated seasonal essentials</p>
       </div>
