@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/accordion";
 import { CartIcon } from '@/components/cart-icon';
 import { ThemeToggle } from '../theme-toggle';
+import { CartSidebar } from '../cart/cart-sidebar';
 
 const navItems = [
     {
@@ -111,7 +112,11 @@ export function Navbar() {
             <User className="h-6 w-6" />
             <span className="sr-only">Account</span>
           </Button>
-          <CartIcon />
+          
+          <CartSidebar>
+            <CartIcon />
+          </CartSidebar>
+
           <span className="hidden sm:block text-sm font-semibold">LK Rs</span>
           
           <Sheet>
@@ -158,5 +163,3 @@ export function Navbar() {
     </header>
   );
 }
-
-    
