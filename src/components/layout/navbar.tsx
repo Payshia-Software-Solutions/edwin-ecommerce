@@ -18,7 +18,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { CartIcon } from '@/components/cart-icon';
 import { ThemeToggle } from '../theme-toggle';
 import { CartSidebar } from '../cart/cart-sidebar';
 
@@ -113,9 +112,7 @@ export function Navbar() {
             <span className="sr-only">Account</span>
           </Button>
           
-          <CartSidebar>
-            <CartIcon />
-          </CartSidebar>
+          <CartSidebar />
 
           <span className="hidden sm:block text-sm font-semibold">LK Rs</span>
           

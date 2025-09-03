@@ -16,17 +16,16 @@ import { CartItem } from "./cart-item";
 import { ScrollArea } from "../ui/scroll-area";
 import Link from 'next/link';
 import { ShoppingBag } from "lucide-react";
+import { CartIcon } from "../cart-icon";
 
-interface CartSidebarProps {
-  children: React.ReactNode;
-}
-
-export function CartSidebar({ children }: CartSidebarProps) {
+export function CartSidebar() {
   const { cartItems, cartCount, totalPrice } = useCart();
 
   return (
     <Sheet>
-      <SheetTrigger asChild>{children}</SheetTrigger>
+      <SheetTrigger asChild>
+        <CartIcon />
+      </SheetTrigger>
       <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
         <SheetHeader className="px-6">
           <SheetTitle>Cart ({cartCount})</SheetTitle>
