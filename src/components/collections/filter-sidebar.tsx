@@ -18,7 +18,7 @@ import { Checkbox } from "../ui/checkbox"
 
 const FilterSection = ({ title, children }: { title: string, children: React.ReactNode }) => (
   <AccordionItem value={title}>
-    <AccordionTrigger className="text-sm font-semibold uppercase hover:no-underline">{title}</AccordionTrigger>
+    <AccordionTrigger className="py-4 text-sm font-semibold uppercase hover:no-underline">{title}</AccordionTrigger>
     <AccordionContent>
       {children}
     </AccordionContent>
@@ -43,7 +43,6 @@ export function FilterSidebar() {
         </FilterSection>
         <FilterSection title="Price">
           <div className="pt-2">
-            {/* Price range slider could go here */}
             <p className="text-sm text-muted-foreground">Price filter placeholder</p>
           </div>
         </FilterSection>
@@ -88,7 +87,7 @@ export function FilterSidebar() {
       <div className="space-y-2 pt-4 border-t">
         <Label className="text-sm font-semibold uppercase">Sort By</Label>
         <Select defaultValue="manual">
-          <SelectTrigger>
+          <SelectTrigger className="w-full">
             <SelectValue placeholder="Sort by" />
           </SelectTrigger>
           <SelectContent>
