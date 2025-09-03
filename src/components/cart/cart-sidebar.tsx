@@ -26,7 +26,7 @@ export function CartSidebar() {
       <SheetTrigger asChild>
         <CartIcon />
       </SheetTrigger>
-      <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
+      <SheetContent className="flex w-full flex-col pr-0 sm:max-w-md">
         <SheetHeader className="px-6">
           <SheetTitle>Cart ({cartCount})</SheetTitle>
         </SheetHeader>
