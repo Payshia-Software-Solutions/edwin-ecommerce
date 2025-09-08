@@ -1,7 +1,7 @@
 "use client";
 
 import { getAccessoryProducts } from '@/lib/data';
-import { ProductCard } from './product-card';
+import { ProductCard } from './collections/product-card';
 import { Button } from './ui/button';
 import Link from 'next/link';
 import {
@@ -10,6 +10,8 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { Product } from '@/lib/types';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -17,7 +19,15 @@ const sectionVariants = {
 };
 
 export function Accessories() {
-  const accessoryProducts = getAccessoryProducts();
+  const [accessoryProducts, setAccessoryProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function fetchAccessories() {
+      const products = await getAccessoryProducts();
+      setAccessoryProducts(products);
+    }
+    fetchAccessories();
+  }, []);
 
   return (
     <motion.section 

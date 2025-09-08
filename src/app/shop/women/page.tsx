@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button';
 import { FilterSidebar } from '@/components/collections/filter-sidebar';
 import { NewsletterSignup } from '@/components/newsletter-signup';
 
-export default function WomenPage() {
-  const products = getWomenProducts();
+export default async function WomenPage() {
+  const products = await getWomenProducts();
 
   return (
     <>

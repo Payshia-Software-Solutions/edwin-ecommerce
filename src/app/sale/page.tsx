@@ -5,10 +5,8 @@ import { Button } from '@/components/ui/button';
 import { FilterSidebar } from '@/components/collections/filter-sidebar';
 import { NewsletterSignup } from '@/components/newsletter-signup';
 
-export default function SalePage() {
-  // For now, we'll show all products on the sale page.
-  // You might want to filter for products that are actually on sale later.
-  const products = getProducts().filter(p => p.salePrice);
+export default async function SalePage() {
+  const products = (await getProducts()).filter(p => p.salePrice);
 
   return (
     <>

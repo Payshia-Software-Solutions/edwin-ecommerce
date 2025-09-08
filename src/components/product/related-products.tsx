@@ -19,6 +19,10 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
     Autoplay({ delay: 2000, stopOnInteraction: true })
   )
 
+  if (!products || products.length === 0) {
+    return null;
+  }
+
   return (
     <section className="mt-24">
       <h2 className="text-2xl font-bold text-center mb-8 uppercase tracking-wider">
