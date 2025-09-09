@@ -102,3 +102,14 @@ export type CartItem = {
   quantity: number;
   selectedSize: string;
 };
+
+export type Collection = {
+  id: string;
+  title: string;
+  description: string;
+  cover_image_url: string;
+  status: string;
+  created_at: string;
+  updated_at: string;
+  company_id: string;
+};

@@ -20,12 +20,21 @@ import {
 } from "@/components/ui/accordion";
 import { ThemeToggle } from '../theme-toggle';
 import { CartSidebar } from '../cart/cart-sidebar';
+import { useEffect, useState } from 'react';
+import { getCollections } from '@/lib/data';
+import { Collection } from '@/lib/types';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu"
+
 
 const navItems = [
-    {
-      label: 'COLLECTION',
-      href: '/collections',
-    },
     {
       label: 'MEN',
       href: '/shop/men',
@@ -55,6 +64,16 @@ const lastChanceLink = {
 };
 
 export function Navbar() {
+  const [collections, setCollections] = useState<Collection[]>([]);
+
+  useEffect(() => {
+    async function fetchCollections() {
+      const fetchedCollections = await getCollections();
+      setCollections(fetchedCollections);
+    }
+    fetchCollections();
+  }, []);
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
@@ -69,31 +88,55 @@ export function Navbar() {
         </div>
 
         {/* Center Section: Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {navItems.map((item) => (
-            item.subItems ? (
-              <DropdownMenu key={item.label}>
-                <DropdownMenuTrigger className="flex items-center text-sm font-medium uppercase text-muted-foreground transition-colors hover:text-foreground focus:outline-none">
-                  {item.label}
-                  <ChevronDown className="h-4 w-4 ml-1" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  {item.subItems.map((subItem) => (
-                    <DropdownMenuItem key={subItem.label} asChild>
-                      <Link href={subItem.href}>{subItem.label}</Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <Link key={item.label} href={item.href} className="text-sm font-medium uppercase text-muted-foreground transition-colors hover:text-foreground">
-                {item.label}
-              </Link>
-            )
-          ))}
-          <Link href={lastChanceLink.href} className="text-sm font-medium uppercase text-muted-foreground transition-colors hover:text-foreground">
-            {lastChanceLink.label}
-          </Link>
+        <nav className="hidden lg:flex items-center gap-1">
+          <NavigationMenu>
+            <NavigationMenuList>
+
+               <NavigationMenuItem>
+                <Link href="/collections" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    COLLECTIONS
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+
+              {navItems.map((item) => (
+                item.subItems ? (
+                  <NavigationMenuItem key={item.label}>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                         <NavigationMenuTrigger className="text-sm font-medium uppercase text-muted-foreground transition-colors hover:text-foreground focus:outline-none">
+                          {item.label}
+                        </NavigationMenuTrigger>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent>
+                        {item.subItems.map((subItem) => (
+                          <DropdownMenuItem key={subItem.label} asChild>
+                            <Link href={subItem.href}>{subItem.label}</Link>
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </NavigationMenuItem>
+                ) : (
+                  <NavigationMenuItem key={item.label}>
+                     <Link href={item.href} legacyBehavior passHref>
+                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                           {item.label}
+                        </NavigationMenuLink>
+                      </Link>
+                  </NavigationMenuItem>
+                )
+              ))}
+               <NavigationMenuItem>
+                 <Link href={lastChanceLink.href} legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                       {lastChanceLink.label}
+                    </NavigationMenuLink>
+                  </Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </nav>
 
         {/* Right Section: Controls and Mobile Menu */}
@@ -126,6 +169,20 @@ export function Navbar() {
             <SheetContent side="right">
               <nav className="grid gap-4 p-4 text-lg font-medium mt-8">
                 <Accordion type="single" collapsible className="w-full">
+                  <AccordionItem value="collections">
+                    <AccordionTrigger className="py-3 text-base font-semibold uppercase hover:no-underline">
+                      Collections
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <div className="grid gap-2 pl-4">
+                        {collections.map((collection) => (
+                          <Link key={collection.id} href={`/collections/${collection.id}`} className="text-muted-foreground hover:text-foreground">
+                            {collection.title}
+                          </Link>
+                        ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
                   {navItems.map((item) => (
                     item.subItems ? (
                     <AccordionItem value={item.label} key={item.label}>
