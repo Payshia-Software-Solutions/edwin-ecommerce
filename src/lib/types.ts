@@ -56,7 +56,7 @@ export type ApiProductDetail = {
   base_location: string;
   product_image_url: string;
   recipe_type: string;
-  barcode: string;
+barcode: string;
   available_locations: string;
   category_id: string;
   brand_id: string;
@@ -111,5 +111,12 @@ export type Collection = {
   status: string;
   created_at: string;
   updated_at: string;
+  company_id: string;
+};
+
+export type Category = {
+  id: string;
+  name: string;
+  description: string;
   company_id: string;
 };

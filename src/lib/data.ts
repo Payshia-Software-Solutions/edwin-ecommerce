@@ -1,5 +1,5 @@
 
-import type { Product, ApiResponse, ApiProduct, Collection } from './types';
+import type { Product, ApiResponse, ApiProduct, Collection, Category } from './types';
 
 function transformApiProductToProduct(apiProduct: ApiProduct): Product {
   const imgBaseUrl = process.env.IMG_BASE_URL || 'https://content-provider.payshia.com/payshia-erp';
@@ -94,6 +94,28 @@ export async function getCollections(): Promise<Collection[]> {
     return data;
   } catch (error) {
     console.error("Error fetching collections:", error);
+    return [];
+  }
+}
+
+export async function getCategories(): Promise<Category[]> {
+  const companyId = process.env.COMPANY_ID || '4';
+  const apiBaseUrl = process.env.API_BASE_URL || 'https://server-erp.payshia.com';
+
+  if (!companyId || !apiBaseUrl) {
+    console.error("Missing environment variables for API access");
+    return [];
+  }
+
+  try {
+    const response = await fetch(`${apiBaseUrl}/master-categories/company?company_id=${companyId}`, { cache: 'no-store' });
+    if (!response.ok) {
+        throw new Error(`Failed to fetch categories: ${response.statusText}`);
+    }
+    const data: Category[] = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching categories:", error);
     return [];
   }
 }

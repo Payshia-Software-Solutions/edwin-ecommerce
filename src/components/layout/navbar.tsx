@@ -21,8 +21,8 @@ import {
 import { ThemeToggle } from '../theme-toggle';
 import { CartSidebar } from '../cart/cart-sidebar';
 import { useEffect, useState } from 'react';
-import { getCollections } from '@/lib/data';
-import { Collection } from '@/lib/types';
+import { getCollections, getCategories } from '@/lib/data';
+import { Collection, Category } from '@/lib/types';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -34,6 +34,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import { cn } from '@/lib/utils';
 import React from 'react';
+import { Separator } from '../ui/separator';
 
 
 const navItems = [
@@ -94,13 +95,18 @@ ListItem.displayName = "ListItem"
 
 export function Navbar() {
   const [collections, setCollections] = useState<Collection[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
-    async function fetchCollections() {
-      const fetchedCollections = await getCollections();
+    async function fetchData() {
+      const [fetchedCollections, fetchedCategories] = await Promise.all([
+        getCollections(),
+        getCategories()
+      ]);
       setCollections(fetchedCollections);
+      setCategories(fetchedCategories);
     }
-    fetchCollections();
+    fetchData();
   }, []);
 
   return (
@@ -124,17 +130,36 @@ export function Navbar() {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Collections</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                    {collections.map((component) => (
-                      <ListItem
-                        key={component.id}
-                        title={component.title}
-                        href={`/collections/${component.id}`}
-                      >
-                        {component.description}
-                      </ListItem>
-                    ))}
-                  </ul>
+                  <div className="grid w-[500px] grid-cols-[1fr_2fr] gap-4 p-4 md:w-[600px] lg:w-[700px]">
+                    <div className="flex flex-col">
+                      <h3 className="font-semibold text-sm mb-2 px-3">Shop by Category</h3>
+                      <div className="flex flex-col">
+                        {categories.map((category) => (
+                          <Link href={`/shop/${category.name.toLowerCase()}`} key={category.id} passHref legacyBehavior>
+                            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "justify-start font-normal normal-case h-9")}>
+                              {category.name}
+                            </NavigationMenuLink>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="font-semibold text-sm mb-2 px-3">Featured Collections</h3>
+                      <ul className="grid grid-cols-2 gap-3">
+                        {collections.map((component) => (
+                          <ListItem
+                            key={component.id}
+                            title={component.title}
+                            href={`/collections/${component.id}`}
+                          >
+                            {component.description}
+                          </ListItem>
+                        ))}
+                      </ul>
+                    </div>
+
+                  </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
@@ -216,6 +241,20 @@ export function Navbar() {
                         {collections.map((collection) => (
                           <Link key={collection.id} href={`/collections/${collection.id}`} className="text-muted-foreground hover:text-foreground">
                             {collection.title}
+                          </Link>
+                        ))}
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                   <AccordionItem value="categories">
+                    <AccordionTrigger className="py-3 text-base font-semibold uppercase hover:no-underline">
+                      Shop by Category
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <div className="grid gap-2 pl-4">
+                        {categories.map((category) => (
+                          <Link key={category.id} href={`/shop/${category.name.toLowerCase()}`} className="text-muted-foreground hover:text-foreground">
+                            {category.name}
                           </Link>
                         ))}
                       </div>
