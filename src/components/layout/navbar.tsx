@@ -23,7 +23,7 @@ import { CartSidebar } from '../cart/cart-sidebar';
 
 const navItems = [
     {
-      label: 'SHOP',
+      label: 'COLLECTION',
       href: '/collections',
     },
     {
