@@ -130,8 +130,8 @@ export function Navbar() {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Collections</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="grid w-[500px] grid-cols-[1fr_2fr] gap-4 p-4 md:w-[600px] lg:w-[700px]">
-                    <div className="flex flex-col">
+                  <div className="grid w-[600px] grid-cols-[1fr_2fr] gap-4 p-4">
+                    <div className="flex flex-col space-y-2">
                       <h3 className="font-semibold text-sm mb-2 px-3">Shop by Category</h3>
                       <div className="flex flex-col">
                         {categories.map((category) => (
@@ -144,21 +144,20 @@ export function Navbar() {
                       </div>
                     </div>
 
-                    <div>
-                      <h3 className="font-semibold text-sm mb-2 px-3">Featured Collections</h3>
-                      <ul className="grid grid-cols-2 gap-3">
-                        {collections.map((component) => (
-                          <ListItem
-                            key={component.id}
-                            title={component.title}
-                            href={`/collections/${component.id}`}
-                          >
-                            {component.description}
-                          </ListItem>
-                        ))}
-                      </ul>
+                    <div className="flex flex-col">
+                        <h3 className="font-semibold text-sm mb-2 px-3">Featured Collections</h3>
+                        <ul className="grid grid-cols-2 gap-3">
+                            {collections.map((component) => (
+                            <ListItem
+                                key={component.id}
+                                title={component.title}
+                                href={`/collections/${component.id}`}
+                            >
+                                {component.description}
+                            </ListItem>
+                            ))}
+                        </ul>
                     </div>
-
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
