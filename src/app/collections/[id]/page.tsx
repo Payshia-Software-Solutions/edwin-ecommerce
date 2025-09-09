@@ -1,5 +1,6 @@
 
-import { getProducts } from '@/lib/data';
+
+import { getProductsByCollectionId } from '@/lib/data';
 import { ProductCard } from '@/components/collections/product-card';
 import { Button } from '@/components/ui/button';
 import { FilterSidebar } from '@/components/collections/filter-sidebar';
@@ -14,10 +15,7 @@ type CollectionPageProps = {
 };
 
 export default async function CollectionPage({ params }: CollectionPageProps) {
-  const allProducts = await getProducts();
-  // TODO: Filter products by collection ID when the API supports it.
-  // For now, we'll show all products.
-  const products = allProducts; 
+  const products = await getProductsByCollectionId(params.id);
 
   return (
     <>
@@ -39,11 +37,17 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
                     Create
                 </Button>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {products.map(product => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
+             {products.length > 0 ? (
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {products.map(product => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-20">
+                <p className="text-muted-foreground">No products found in this collection.</p>
+              </div>
+            )}
             <div className="text-center mt-12">
               <Button size="lg" className="bg-black text-white hover:bg-black/80 rounded-full font-bold px-10 uppercase">
                 Load More

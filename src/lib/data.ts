@@ -1,5 +1,6 @@
 
-import type { Product, ApiResponse, ApiProduct, Collection, Category } from './types';
+
+import type { Product, ApiResponse, ApiProduct, Collection, Category, CollectionProduct } from './types';
 
 function transformApiProductToProduct(apiProduct: ApiProduct): Product {
   const imgBaseUrl = process.env.IMG_BASE_URL || 'https://content-provider.payshia.com/payshia-erp';
@@ -116,6 +117,36 @@ export async function getCategories(): Promise<Category[]> {
     return data;
   } catch (error) {
     console.error("Error fetching categories:", error);
+    return [];
+  }
+}
+
+export async function getProductsByCollectionId(collectionId: string): Promise<Product[]> {
+  const companyId = process.env.COMPANY_ID || '4';
+  const apiBaseUrl = process.env.API_BASE_URL || 'https://server-erp.payshia.com';
+
+  if (!collectionId || !companyId || !apiBaseUrl) {
+    console.error("Missing environment variables or collectionId for API access");
+    return [];
+  }
+
+  try {
+    const response = await fetch(`${apiBaseUrl}/collection-products/collection/${collectionId}`, { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error(`Failed to fetch collection products: ${response.statusText}`);
+    }
+    const collectionProducts: CollectionProduct[] = await response.json();
+    const productIds = collectionProducts.map(p => p.product_id);
+    
+    if (productIds.length === 0) {
+      return [];
+    }
+
+    const allProducts = await getProducts();
+    return allProducts.filter(p => productIds.includes(p.id));
+
+  } catch (error) {
+    console.error("Error fetching products by collection:", error);
     return [];
   }
 }

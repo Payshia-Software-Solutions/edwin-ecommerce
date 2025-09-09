@@ -1,4 +1,5 @@
 
+
 export type ApiProductImage = {
   id: string;
   product_id: string;
@@ -120,3 +121,12 @@ export type Category = {
   description: string;
   company_id: string;
 };
+
+export type CollectionProduct = {
+  id: string;
+  collection_id: string;
+  product_id: string;
+  created_at: string;
+  updated_at: string;
+  company_id: string;
+}
