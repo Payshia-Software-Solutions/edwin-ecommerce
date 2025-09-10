@@ -14,10 +14,11 @@ function transformApiProductToProduct(apiProduct: ApiProduct): Product {
   return {
     id: apiProduct.product.id,
     name: apiProduct.product.display_name,
+    slug: apiProduct.product.slug,
     category: apiProduct.product.category,
     price: parseFloat(apiProduct.product.price),
     description: apiProduct.product.description,
-    images: imagePool.map(img => `${imgBaseUrl}${img.img_url}`),
+    images: imagePool.length > 0 ? imagePool.map(img => `${imgBaseUrl}${img.img_url}`) : (apiProduct.product.product_image_url ? [`${imgBaseUrl}${apiProduct.product.product_image_url}`] : []),
     sizes: allSizes,
     featured: true, // You might want to determine this based on your API data
     data_ai_hint: apiProduct.product.name.toLowerCase(),
@@ -53,6 +54,33 @@ export async function getProducts(): Promise<Product[]> {
 export async function getProductById(id: string): Promise<Product | undefined> {
   const products = await getProducts();
   return products.find(p => p.id === id);
+}
+
+export async function getProductBySlug(slug: string): Promise<Product | undefined> {
+  const companyId = process.env.COMPANY_ID || '4';
+  const apiBaseUrl = process.env.API_BASE_URL || 'https://server-erp.payshia.com';
+
+  if (!slug || !companyId || !apiBaseUrl) {
+    console.error("Missing environment variables or slug for API access");
+    return undefined;
+  }
+
+  try {
+    const response = await fetch(`${apiBaseUrl}/products/details/slug/${slug}?company_id=${companyId}`, { cache: 'no-store' });
+    if (!response.ok) {
+        if (response.status === 404) {
+            // Fallback to searching all products by id if slug not found
+            const allProducts = await getProducts();
+            return allProducts.find(p => p.id === slug);
+        }
+        throw new Error(`Failed to fetch product by slug: ${response.statusText}`);
+    }
+    const data: ApiProduct = await response.json();
+    return transformApiProductToProduct(data);
+  } catch (error) {
+    console.error("Error fetching product by slug:", error);
+    return undefined;
+  }
 }
 
 export async function getFeaturedProducts(): Promise<Product[]> {

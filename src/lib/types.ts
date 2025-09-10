@@ -81,6 +81,7 @@ export type ApiResponse = {
 export type Product = {
   id: string;
   name: string;
+  slug?: string | null;
   category: string;
   price: number;
   salePrice?: number;

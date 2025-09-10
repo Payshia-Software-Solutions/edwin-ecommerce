@@ -12,12 +12,13 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const hasSale = product.salePrice && product.salePrice < product.price;
+  const href = `/product/${product.slug || product.id}`;
 
   return (
-    <Link href={`/product/${product.id}`} className="block group">
+    <Link href={href} className="block group">
       <div className="relative aspect-[3/4] w-full overflow-hidden rounded-md bg-gray-100 dark:bg-zinc-800">
         <Image
-          src={product.images[0]}
+          src={product.images[0] || 'https://placehold.co/600x800.png'}
           alt={product.name}
           data-ai-hint={product.data_ai_hint || 'product image'}
           fill
