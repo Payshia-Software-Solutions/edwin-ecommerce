@@ -4,11 +4,23 @@ import type { Product, ApiResponse, ApiProduct, Collection, Category, Collection
 
 function transformApiProductToProduct(apiProduct: ApiProduct): Product {
   const imgBaseUrl = process.env.IMG_BASE_URL || 'https://content-provider.payshia.com/payshia-erp';
-  const firstVariant = apiProduct.variants[0];
-
-  // Use product_images as a fallback if variant images are not available
-  const imagePool = firstVariant?.images.length > 0 ? firstVariant.images : apiProduct.product_images;
   
+  // Use a variety of sources for images, preferring variant-specific ones
+  const variantImages = apiProduct.variants.flatMap(v => v.images.map(img => `${imgBaseUrl}${img.img_url}`));
+  const productImages = apiProduct.product_images.map(img => `${imgBaseUrl}${img.img_url}`);
+  const mainProductImage = apiProduct.product.product_image_url ? [`${imgBaseUrl}${apiProduct.product.product_image_url}`] : [];
+
+  let allImages = [];
+  if (variantImages.length > 0) {
+    allImages = variantImages;
+  } else if (productImages.length > 0) {
+    allImages = productImages;
+  } else {
+    allImages = mainProductImage;
+  }
+  // Remove duplicates
+  allImages = [...new Set(allImages)];
+
   const allSizes = apiProduct.variants.map(v => v.variant.size).filter((v, i, a) => a.indexOf(v) === i);
 
   return {
@@ -18,7 +30,7 @@ function transformApiProductToProduct(apiProduct: ApiProduct): Product {
     category: apiProduct.product.category,
     price: parseFloat(apiProduct.product.price),
     description: apiProduct.product.description,
-    images: imagePool.length > 0 ? imagePool.map(img => `${imgBaseUrl}${img.img_url}`) : (apiProduct.product.product_image_url ? [`${imgBaseUrl}${apiProduct.product.product_image_url}`] : []),
+    images: allImages.length > 0 ? allImages : ['https://placehold.co/600x800.png'],
     sizes: allSizes,
     featured: true, // You might want to determine this based on your API data
     data_ai_hint: apiProduct.product.name.toLowerCase(),
@@ -57,16 +69,15 @@ export async function getProductById(id: string): Promise<Product | undefined> {
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | undefined> {
-  const companyId = process.env.COMPANY_ID || '4';
   const apiBaseUrl = process.env.API_BASE_URL || 'https://server-erp.payshia.com';
 
-  if (!slug || !companyId || !apiBaseUrl) {
-    console.error("Missing environment variables or slug for API access");
+  if (!slug || !apiBaseUrl) {
+    console.error("Missing slug or apiBaseUrl for API access");
     return undefined;
   }
 
   try {
-    const response = await fetch(`${apiBaseUrl}/products/details/slug/${slug}?company_id=${companyId}`, { cache: 'no-store' });
+    const response = await fetch(`${apiBaseUrl}/products/details/slug/${slug}`, { cache: 'no-store' });
     if (!response.ok) {
         if (response.status === 404) {
             // Fallback to searching all products by id if slug not found
@@ -79,9 +90,12 @@ export async function getProductBySlug(slug: string): Promise<Product | undefine
     return transformApiProductToProduct(data);
   } catch (error) {
     console.error("Error fetching product by slug:", error);
-    return undefined;
+    // As a fallback, try getting all products and finding by slug or id
+    const allProducts = await getProducts();
+    return allProducts.find(p => p.slug === slug || p.id === slug);
   }
 }
+
 
 export async function getFeaturedProducts(): Promise<Product[]> {
   const products = await getProducts();
