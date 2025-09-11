@@ -32,7 +32,7 @@ function OrderSummaryItem({ item }: { item: any }) {
 
 export function OrderSummary() {
     const { cartItems, totalPrice } = useCart();
-    const shippingCost = 0; // Or calculate based on selection
+    const shippingCost: number = 0; // Or calculate based on selection
 
   return (
     <div className="bg-muted/30 p-6 rounded-lg sticky top-24">
