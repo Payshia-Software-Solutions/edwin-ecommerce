@@ -21,15 +21,26 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const { toast } = useToast();
 
+  // Load cart from local storage on initial render
   useEffect(() => {
-    const storedCart = localStorage.getItem('cart');
-    if (storedCart) {
-      setCartItems(JSON.parse(storedCart));
+    try {
+      const storedCart = localStorage.getItem('cart');
+      if (storedCart) {
+        setCartItems(JSON.parse(storedCart));
+      }
+    } catch (error) {
+      console.error("Failed to parse cart from localStorage", error);
+      // If parsing fails, start with an empty cart
+      setCartItems([]);
     }
   }, []);
 
+  // Save cart to local storage whenever it changes
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cartItems));
+    // We need to check if cartItems is not the initial empty array to prevent overwriting on first load before hydration
+    if (cartItems.length > 0 || localStorage.getItem('cart')) {
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+    }
   }, [cartItems]);
 
   const addToCart = (item: CartItem) => {
@@ -68,6 +79,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const clearCart = () => {
     setCartItems([]);
+    // Also clear from localStorage
+    localStorage.removeItem('cart');
   };
 
   const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0);
