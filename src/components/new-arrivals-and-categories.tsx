@@ -48,9 +48,15 @@ export function NewArrivalsAndCategories() {
       ]);
       setNewProducts(products);
       
-      const filteredCollections = fetchedCollections.filter(c => 
-        ['men', 'women', 'accessories'].includes(c.title.toLowerCase())
-      );
+      const categoryOrder = ['men', 'women', 'accessories'];
+      const filteredCollections = fetchedCollections
+        .filter(c => categoryOrder.includes(c.title.toLowerCase()))
+        .sort((a, b) => {
+          const aIndex = categoryOrder.indexOf(a.title.toLowerCase());
+          const bIndex = categoryOrder.indexOf(b.title.toLowerCase());
+          return aIndex - bIndex;
+        });
+
       setCollections(filteredCollections);
     }
     fetchData();
