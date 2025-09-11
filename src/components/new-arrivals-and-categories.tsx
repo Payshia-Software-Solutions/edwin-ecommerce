@@ -25,14 +25,14 @@ const sectionVariants = {
 const imgBaseUrl = process.env.NEXT_PUBLIC_IMG_BASE_URL || 'https://content-provider.payshia.com/payshia-erp';
 
 const categoryPlaceholders: { [key: string]: string } = {
-  mens: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtYWxlJTIwbW9kZWx8ZW58MHx8fHwxNzUxNzM0OTkyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-  womens: "https://images.unsplash.com/photo-1623039497026-00af61471107?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmZW1hbGUlMjBtb2RlbHxlbnwwfHx8fDE3NTE3MzQ5OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  men: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtYWxlJTIwbW9kZWx8ZW58MHx8fHwxNzUxNzM0OTkyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+  women: "https://images.unsplash.com/photo-1623039497026-00af61471107?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmZW1hbGUlMjBtb2RlbHxlbnwwfHx8fDE3NTE3MzQ5OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
   accessories: "https://images.unsplash.com/photo-1626931291835-f1d59553aa2e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxoYW5kYmFnJTIwZmFzaGlvbnxlbnwwfHx8fDE3NTE3MzQ5OTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
 };
 
 const dataAiHints: { [key: string]: string } = {
-  mens: "male model",
-  womens: "female model",
+  men: "male model",
+  women: "female model",
   accessories: "handbag fashion",
 };
 
@@ -49,7 +49,7 @@ export function NewArrivalsAndCategories() {
       setNewProducts(products);
       
       const filteredCollections = fetchedCollections.filter(c => 
-        ['mens', 'womens', 'accessories'].includes(c.title.toLowerCase())
+        ['men', 'women', 'accessories'].includes(c.title.toLowerCase())
       );
       setCollections(filteredCollections);
     }
@@ -96,7 +96,7 @@ export function NewArrivalsAndCategories() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {collections.map((collection) => {
             const titleLower = collection.title.toLowerCase();
-            const href = `/shop/${titleLower === 'mens' ? 'men' : (titleLower === 'womens' ? 'women' : 'accessories')}`;
+            const href = `/shop/${titleLower}`;
             const imageUrl = collection.cover_image_url ? `${imgBaseUrl}${collection.cover_image_url}` : categoryPlaceholders[titleLower] || "https://placehold.co/600x800";
             const dataAiHint = dataAiHints[titleLower] || "fashion model";
 
