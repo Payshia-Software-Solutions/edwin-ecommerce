@@ -4,7 +4,7 @@
 import Image from 'next/image';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
-import { X, Plus, Minus } from 'lucide-react';
+import { Trash2, Plus, Minus } from 'lucide-react';
 import type { CartItem as CartItemType } from '@/lib/types';
 import { useCart } from '@/context/cart-context';
 
@@ -63,7 +63,7 @@ export function CartItem({ item }: CartItemProps) {
         </div>
       </div>
       <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleRemove}>
-        <X className="h-4 w-4" />
+        <Trash2 className="h-4 w-4" />
         <span className="sr-only">Remove item</span>
       </Button>
     </div>
