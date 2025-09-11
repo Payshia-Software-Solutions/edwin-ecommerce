@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { getFeaturedProducts } from '@/lib/data';
-import { ProductCard } from './product-card';
+import { ProductCard } from './collections/product-card';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import {
@@ -13,6 +13,8 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel"
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { Product } from '@/lib/types';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -20,7 +22,15 @@ const sectionVariants = {
 };
 
 export function NewArrivalsAndCategories() {
-  const newProducts = getFeaturedProducts();
+  const [newProducts, setNewProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function fetchNew() {
+      const products = await getFeaturedProducts();
+      setNewProducts(products);
+    }
+    fetchNew();
+  }, []);
 
   return (
     <motion.section 

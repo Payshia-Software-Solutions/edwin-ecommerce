@@ -1,8 +1,8 @@
 
 "use client"
 
-import { useState } from 'react';
-import type { Product } from '@/lib/types';
+import { useState, useEffect } from 'react';
+import type { Product, ApiVariant } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { useCart } from '@/context/cart-context';
@@ -21,21 +21,49 @@ interface ProductDetailsProps {
 }
 
 export function ProductDetails({ product }: ProductDetailsProps) {
+  const [selectedVariant, setSelectedVariant] = useState<ApiVariant | null>(product.variants?.[0] || null);
   const [selectedSize, setSelectedSize] = useState<string | null>(product.sizes[0] || null);
+  const [displayPrice, setDisplayPrice] = useState<number>(product.price);
+  
   const { addToCart } = useCart();
 
-  const handleAddToCart = () => {
+  useEffect(() => {
     if (selectedSize) {
+      const variant = product.variants.find(v => v.variant.size === selectedSize);
+      if (variant) {
+        setSelectedVariant(variant);
+        setDisplayPrice(parseFloat(variant.variant.price));
+      } else {
+        // Fallback to base product price if variant for size not found
+        setDisplayPrice(product.price);
+        setSelectedVariant(null);
+      }
+    } else {
+       const defaultVariant = product.variants?.[0];
+       if(defaultVariant) {
+         setSelectedVariant(defaultVariant);
+         setDisplayPrice(parseFloat(defaultVariant.variant.price));
+       } else {
+         setDisplayPrice(product.price);
+         setSelectedVariant(null);
+       }
+    }
+  }, [selectedSize, product.variants, product.price]);
+
+
+  const handleAddToCart = () => {
+    if (selectedVariant && selectedSize) {
       addToCart({
         id: product.id,
         name: product.name,
-        price: product.price,
+        price: parseFloat(selectedVariant.variant.price),
         image: product.images[0],
         quantity: 1,
         selectedSize: selectedSize,
       });
     } else {
-      // Maybe show a toast message to select a size
+      // This case might happen for products without variants, but we should handle it.
+      // For now, let's assume variants are always present if sizes are.
       alert("Please select a size.");
     }
   };
@@ -49,7 +77,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
           <span className="font-medium text-foreground"> {product.name}</span>
         </div>
         <h1 className="text-3xl font-bold">{product.name}</h1>
-        <p className="text-2xl font-semibold mt-2">LKR {product.price.toFixed(2)}</p>
+        <p className="text-2xl font-semibold mt-2">LKR {displayPrice.toFixed(2)}</p>
         <div className="mt-2">
           <span className="text-green-600 font-semibold">IN STOCK</span>
         </div>

@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/carousel";
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { Product } from '@/lib/types';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -18,7 +20,15 @@ const sectionVariants = {
 };
 
 export function FeaturedCollection() {
-  const bestSellers = getFeaturedProducts();
+  const [bestSellers, setBestSellers] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function fetchFeatured() {
+        const products = await getFeaturedProducts();
+        setBestSellers(products);
+    }
+    fetchFeatured();
+  }, [])
 
   return (
     <motion.section 
@@ -78,7 +88,7 @@ export function FeaturedCollection() {
                           <div className="pt-4 text-left">
                               <h3 className="font-medium truncate">{product.name}</h3>
                               <p className="text-sm text-muted-foreground">{product.category}</p>
-                              <p className="font-semibold mt-1">${product.price.toFixed(2)}</p>
+                              <p className="font-semibold mt-1">LKR {product.price.toFixed(2)}</p>
                           </div>
                       </div>
                   </Link>

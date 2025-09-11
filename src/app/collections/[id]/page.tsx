@@ -1,5 +1,6 @@
 
-import { getProducts } from '@/lib/data';
+
+import { getProductsByCollectionId } from '@/lib/data';
 import { ProductCard } from '@/components/collections/product-card';
 import { Button } from '@/components/ui/button';
 import { FilterSidebar } from '@/components/collections/filter-sidebar';
@@ -7,14 +8,20 @@ import { NewsletterSignup } from '@/components/newsletter-signup';
 import { Input } from '@/components/ui/input';
 import { PlusCircle, Search } from 'lucide-react';
 
-export default async function CollectionsPage() {
-  const products = await getProducts();
+type CollectionPageProps = {
+  params: {
+    id: string;
+  };
+};
+
+export default async function CollectionPage({ params }: CollectionPageProps) {
+  const products = await getProductsByCollectionId(params.id);
 
   return (
     <>
       <div className="container mx-auto px-4 py-8">
         <div className="mb-10 text-center md:text-left">
-          <h1 className="text-3xl font-bold uppercase tracking-wider">Our Collection</h1>
+          <h1 className="text-3xl font-bold uppercase tracking-wider">Collection</h1>
           <p className="text-muted-foreground mt-1">Explore our curated seasonal essentials</p>
         </div>
         <div className="flex flex-col md:flex-row gap-12">
@@ -30,11 +37,17 @@ export default async function CollectionsPage() {
                     Create
                 </Button>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {products.map(product => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
+             {products.length > 0 ? (
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {products.map(product => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-20">
+                <p className="text-muted-foreground">No products found in this collection.</p>
+              </div>
+            )}
             <div className="text-center mt-12">
               <Button size="lg" className="bg-black text-white hover:bg-black/80 rounded-full font-bold px-10 uppercase">
                 Load More
