@@ -152,9 +152,7 @@ export function Navbar() {
                                 key={component.id}
                                 title={component.title}
                                 href={`/collections/${component.id}`}
-                            >
-                                {component.description}
-                            </ListItem>
+                            />
                             ))}
                         </ul>
                     </div>
