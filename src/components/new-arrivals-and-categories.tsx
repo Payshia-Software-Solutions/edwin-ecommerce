@@ -74,7 +74,7 @@ export function NewArrivalsAndCategories() {
         <div>
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center gap-4">
-              <h2 className="text-3xl md:text-4xl font-headline text-foreground">
+              <h2 className="text-2xl md:text-3xl font-headline text-foreground">
                 New Drop
               </h2>
               <Badge variant="default">NEW COLLECTION</Badge>
