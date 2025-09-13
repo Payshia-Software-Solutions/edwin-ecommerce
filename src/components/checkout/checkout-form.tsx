@@ -1,6 +1,7 @@
 
 "use client";
 
+import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -16,6 +17,8 @@ import Link from 'next/link';
 
 
 export function CheckoutForm() {
+  const [billingAddressOption, setBillingAddressOption] = useState("same-address");
+
   return (
     <div className="space-y-8">
       
@@ -91,20 +94,71 @@ export function CheckoutForm() {
       {/* Billing Address */}
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Billing Address</h2>
-        <RadioGroup defaultValue="same-address" className="space-y-3">
+        <RadioGroup value={billingAddressOption} onValueChange={setBillingAddressOption} className="space-y-3">
           <div className="flex items-center space-x-3 rounded-lg border p-4">
             <RadioGroupItem value="same-address" id="same-address" />
             <Label htmlFor="same-address" className="font-medium">
               Same as shipping address
             </Label>
           </div>
-          <div className="flex items-center space-x-3 rounded-lg border p-4">
+          <div className="flex items-center space-x-3 rounded-lg border p-4 has-[[data-state=checked]]:border-primary">
             <RadioGroupItem value="different-address" id="different-address" />
             <Label htmlFor="different-address" className="font-medium">
               Use a different billing address
             </Label>
           </div>
         </RadioGroup>
+
+        {billingAddressOption === "different-address" && (
+          <div className="space-y-4 pt-4 border-t">
+              <h3 className="sr-only">Billing Address Form</h3>
+              <div>
+                  <Label htmlFor="billing-country" className="text-xs">Country/Region</Label>
+                  <Select defaultValue="sri-lanka">
+                      <SelectTrigger id="billing-country">
+                          <SelectValue placeholder="Select Country" />
+                      </SelectTrigger>
+                      <SelectContent>
+                          <SelectItem value="sri-lanka">Sri Lanka</SelectItem>
+                          <SelectItem value="usa">United States</SelectItem>
+                          <SelectItem value="uk">United Kingdom</SelectItem>
+                      </SelectContent>
+                  </Select>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                  <div>
+                      <Label htmlFor="billing-first-name" className="text-xs">First name</Label>
+                      <Input id="billing-first-name" />
+                  </div>
+                   <div>
+                      <Label htmlFor="billing-last-name" className="text-xs">Last name</Label>
+                      <Input id="billing-last-name" />
+                  </div>
+              </div>
+              <div>
+                   <Label htmlFor="billing-address" className="text-xs">Address</Label>
+                   <Input id="billing-address" />
+              </div>
+               <div>
+                   <Label htmlFor="billing-apartment" className="text-xs">Apartment, suite, etc. (optional)</Label>
+                   <Input id="billing-apartment" />
+              </div>
+               <div className="grid grid-cols-2 gap-4">
+                  <div>
+                      <Label htmlFor="billing-city" className="text-xs">City</Label>
+                      <Input id="billing-city" />
+                  </div>
+                   <div>
+                      <Label htmlFor="billing-postal-code" className="text-xs">Postal Code</Label>
+                      <Input id="billing-postal-code" />
+                  </div>
+              </div>
+              <div>
+                  <Label htmlFor="billing-phone" className="text-xs">Phone (optional)</Label>
+                  <Input id="billing-phone" />
+              </div>
+          </div>
+        )}
       </div>
     </div>
   );
