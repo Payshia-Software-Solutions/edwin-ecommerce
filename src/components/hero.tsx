@@ -20,7 +20,7 @@ export function Hero() {
           Never Die
         </p>
         <Button asChild size="lg" className="bg-foreground text-background hover:bg-foreground/90 rounded-full font-bold px-10 uppercase">
-          <Link href="/shop">Shop Now</Link>
+          <Link href="/collections">Shop Now</Link>
         </Button>
       </div>
     </motion.section>
