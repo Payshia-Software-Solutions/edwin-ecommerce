@@ -80,7 +80,7 @@ export function NewArrivalsAndCategories() {
               <Badge variant="default">NEW COLLECTION</Badge>
             </div>
             <Button asChild variant="outline">
-              <Link href="/shop">Shop All</Link>
+              <Link href="/collections">Shop All</Link>
             </Button>
           </div>
           <Carousel
