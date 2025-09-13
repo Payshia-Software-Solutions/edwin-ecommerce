@@ -22,12 +22,14 @@ import Link from "next/link";
 export function FilterSidebarContent() {
   return (
     <div className="space-y-8">
-       <Link href="/">
-          <div className="flex flex-col px-1">
-            <span className="font-headline text-3xl font-bold tracking-widest">EDDWIN</span>
-            <span className="font-cursive text-lg -mt-1">Never Die</span>
-          </div>
-        </Link>
+       <div className="md:hidden">
+         <Link href="/">
+            <div className="flex flex-col px-1">
+              <span className="font-headline text-3xl font-bold tracking-widest">EDDWIN</span>
+              <span className="font-cursive text-lg -mt-1">Never Die</span>
+            </div>
+          </Link>
+       </div>
       <Accordion type="multiple" defaultValue={['availability', 'price']} className="w-full">
         <AccordionItem value="availability">
           <AccordionTrigger className="text-sm uppercase tracking-wider py-4 font-normal hover:no-underline">Availability</AccordionTrigger>
