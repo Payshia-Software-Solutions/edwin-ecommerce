@@ -21,7 +21,7 @@ export function Payment() {
         <h2 className="text-xl font-semibold">Payment</h2>
         <p className="text-sm text-muted-foreground">All transactions are secure and encrypted.</p>
         <RadioGroup defaultValue="card" className="space-y-3">
-            <div className="rounded-lg border has-[[data-state=checked]]:border-primary">
+            <div className="rounded-lg border bg-background has-[[data-state=checked]]:border-primary">
                 <div className="flex items-center space-x-3 p-4">
                     <RadioGroupItem value="card" id="card" />
                     <Label htmlFor="card" className="font-medium flex-1">
@@ -35,7 +35,7 @@ export function Payment() {
                     </p>
                 </div>
             </div>
-            <div className="flex items-center space-x-3 rounded-lg border p-4 has-[[data-state=checked]]:border-primary">
+            <div className="flex items-center space-x-3 rounded-lg border bg-background p-4 has-[[data-state=checked]]:border-primary">
                 <RadioGroupItem value="cod" id="cod" />
                 <Label htmlFor="cod" className="font-medium">
                 Cash On Delivery

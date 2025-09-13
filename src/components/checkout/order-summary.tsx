@@ -36,7 +36,7 @@ export function OrderSummary() {
     const shippingCost: number = 0; // Or calculate based on selection
 
   return (
-    <div className="bg-muted/30 p-6 rounded-lg">
+    <div className="bg-muted/30 dark:bg-zinc-900/50 p-6 rounded-lg">
         
         <div className="space-y-4 mb-6">
             {cartItems.map(item => (

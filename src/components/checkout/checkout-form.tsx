@@ -95,13 +95,13 @@ export function CheckoutForm() {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Billing Address</h2>
         <RadioGroup value={billingAddressOption} onValueChange={setBillingAddressOption} className="space-y-3">
-          <div className="flex items-center space-x-3 rounded-lg border p-4">
+          <div className="flex items-center space-x-3 rounded-lg border p-4 bg-background has-[[data-state=checked]]:border-primary">
             <RadioGroupItem value="same-address" id="same-address" />
             <Label htmlFor="same-address" className="font-medium">
               Same as shipping address
             </Label>
           </div>
-          <div className="flex items-center space-x-3 rounded-lg border p-4 has-[[data-state=checked]]:border-primary">
+          <div className="flex items-center space-x-3 rounded-lg border p-4 bg-background has-[[data-state=checked]]:border-primary">
             <RadioGroupItem value="different-address" id="different-address" />
             <Label htmlFor="different-address" className="font-medium">
               Use a different billing address
