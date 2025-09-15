@@ -1,11 +1,16 @@
 
+'use client';
+
+import { useState, useEffect } from 'react';
 import { getProducts } from '@/lib/data';
+import type { Product } from '@/lib/types';
 import { ProductCard } from '@/components/collections/product-card';
 import { Button } from '@/components/ui/button';
-import { FilterSidebar } from '@/components/collections/filter-sidebar';
+import { FilterSidebarContent } from '@/components/collections/filter-sidebar';
 import { NewsletterSignup } from '@/components/newsletter-signup';
 import { Input } from '@/components/ui/input';
-import { PlusCircle, Search } from 'lucide-react';
+import { Search, SlidersHorizontal } from 'lucide-react';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
 type CategoryPageProps = {
   params: {
@@ -13,31 +18,54 @@ type CategoryPageProps = {
   };
 };
 
-export default async function CategoryPage({ params }: CategoryPageProps) {
-  const allProducts = await getProducts();
+export default function CategoryPage({ params }: CategoryPageProps) {
+  const [products, setProducts] = useState<Product[]>([]);
   const categoryName = decodeURIComponent(params.category);
-  
-  const products = allProducts.filter(p => p.category.toLowerCase() === categoryName.toLowerCase()); 
+
+  useEffect(() => {
+    async function loadProducts() {
+      const allProducts = await getProducts();
+      const filteredProducts = allProducts.filter(p => p.category.toLowerCase() === categoryName.toLowerCase());
+      setProducts(filteredProducts);
+    }
+    loadProducts();
+  }, [categoryName]);
 
   return (
     <>
       <div className="container mx-auto px-4 py-8">
-        <div className="mb-10 text-center md:text-left">
+        <div className="mb-10 text-center">
           <h1 className="text-3xl font-bold uppercase tracking-wider">{categoryName}</h1>
           <p className="text-muted-foreground mt-1">Explore our curated seasonal essentials</p>
         </div>
         <div className="flex flex-col md:flex-row gap-12">
-          <FilterSidebar />
+          <aside className="w-full md:w-64 hidden md:block">
+            <FilterSidebarContent />
+          </aside>
           <main className="flex-1">
             <div className="flex justify-between items-center mb-6">
-                <div className="relative w-full max-w-sm">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input placeholder="Search..." className="pl-9" />
-                </div>
-                <Button>
-                    <PlusCircle className="mr-2 h-4 w-4" />
-                    Create
-                </Button>
+              <div className="md:hidden">
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <Button variant="outline" size="icon">
+                      <SlidersHorizontal className="h-4 w-4" />
+                      <span className="sr-only">Filters</span>
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="right">
+                    <SheetHeader>
+                      <SheetTitle>Filters</SheetTitle>
+                    </SheetHeader>
+                    <div className="p-4">
+                      <FilterSidebarContent />
+                    </div>
+                  </SheetContent>
+                </Sheet>
+              </div>
+              <div className="relative w-full max-w-sm">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input placeholder="Search..." className="pl-9" />
+              </div>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {products.map(product => (
